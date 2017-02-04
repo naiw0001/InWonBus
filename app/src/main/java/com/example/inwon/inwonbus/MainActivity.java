@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String temp = st_input.getText().toString();
+                Intent intent = new Intent(MainActivity.this,BusstationNmList.class);
+                intent.putExtra("name",temp);
+                startActivity(intent);
             }
         });
 
