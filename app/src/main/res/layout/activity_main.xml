@@ -11,53 +11,52 @@
     tools:context="com.example.inwon.inwonbus.MainActivity">
 
     <LinearLayout
+        android:id="@+id/businput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/businput">
+        android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit"
-            android:inputType="number"
             android:layout_weight="1"
-            android:hint="bus"/>
+            android:hint="bus"
+            android:inputType="number" />
 
         <Button
+            android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/send"
             android:layout_weight="1"
-            android:text="버스 조회"/>
+            android:text="버스 조회" />
 
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/stationinput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/stationinput"
-        android:layout_below="@id/businput">
+        android:layout_below="@id/businput"
+        android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/edit_station"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_station"
             android:layout_weight="1"
-            android:hint="station"/>
+            android:hint="station" />
 
         <Button
+            android:id="@+id/send_station"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/send_station"
             android:layout_weight="1"
-            android:text="정류장검색"/>
+            android:text="정류장검색" />
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

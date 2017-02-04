@@ -19,17 +19,17 @@ import java.util.ArrayList;
  */
 
 public class BusStationActivity extends AppCompatActivity {
-    String station,station_num;
+    String station, station_num;
     BusStationArrive busStationArrive;
     LinearLayout stationLayout;
-    TextView stationNm,stationId;
-    ArrayList<String> adirectionArr,arrmsg1Arr,arrmsg2Arr,rtNmArr;
+    TextView stationNm, stationId;
+    ArrayList<String> adirectionArr, arrmsg1Arr, arrmsg2Arr, rtNmArr;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busstation);
-        stationLayout = (LinearLayout)findViewById(R.id.busstationarrive);
+        stationLayout = (LinearLayout) findViewById(R.id.busstationarrive);
         adirectionArr = new ArrayList<>();
         arrmsg1Arr = new ArrayList<>();
         arrmsg2Arr = new ArrayList<>();
@@ -38,18 +38,18 @@ public class BusStationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         station = intent.getStringExtra("station");
         station_num = intent.getStringExtra("station_num");
-        stationNm = (TextView)findViewById(R.id.stationNm);
-        stationId = (TextView)findViewById(R.id.stationId);
+        stationNm = (TextView) findViewById(R.id.stationNm);
+        stationId = (TextView) findViewById(R.id.stationId);
         stationNm.setText(station);
         stationId.setText(station_num);
 
         staionarrive();
-        for (int i = 0 ; i < rtNmArr.size();i++){
+        for (int i = 0; i < rtNmArr.size(); i++) {
             makelayout(i);
         }
     }
 
-    public void makelayout(int index){
+    public void makelayout(int index) {
         int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics()); // set dp
         int vheight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()); // set dp
 
@@ -64,14 +64,14 @@ public class BusStationActivity extends AppCompatActivity {
         TextView arrive2Text = new TextView(this);
 
         View view = new View(this);
-        LinearLayout.LayoutParams viewP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,vheight);
+        LinearLayout.LayoutParams viewP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, vheight);
         view.setBackgroundColor(Color.parseColor("#666666"));
         view.setLayoutParams(viewP);
 
         LinearLayout.LayoutParams mainP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
-        LinearLayout.LayoutParams busnumP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height,1);
+        LinearLayout.LayoutParams busnumP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height, 1);
         RelativeLayout.LayoutParams busnumSubp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams timeP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height,1);
+        LinearLayout.LayoutParams timeP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height, 1);
         RelativeLayout.LayoutParams timeSubP = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams textP = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -96,7 +96,7 @@ public class BusStationActivity extends AppCompatActivity {
         arrive2Text.setLayoutParams(textP);
 
         busnumText.setText(rtNmArr.get(index).toString());
-        adirectionText.setText(adirectionArr.get(index).toString()+" 방향");
+        adirectionText.setText(adirectionArr.get(index).toString() + " 방향");
         arrive1Text.setText(arrmsg1Arr.get(index).toString());
         arrive2Text.setText(arrmsg2Arr.get(index).toString());
 

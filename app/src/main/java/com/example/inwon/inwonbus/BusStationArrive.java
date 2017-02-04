@@ -15,50 +15,51 @@ import java.util.ArrayList;
  * Created by inwon on 2017-02-04.
  */
 
-public class BusStationArrive extends AsyncTask<String,String,String>{
+public class BusStationArrive extends AsyncTask<String, String, String> {
     URL url;
     String uri = "http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid";
     String key = "zadOGy8xBhJVBYYhLSPbfGoQHfJ1mAFAOQADCvNFSWWshGWcmf1St10W17yKjJtVEOR4hpjtrYZdBk32bLFO6w%3D%3D";
     String xmlURL = uri + "?serviceKey=" + key;
-    String tagname = "",adirection="",arrmsg1="",arrmsg2="",rtNm="";
+    String tagname = "", adirection = "", arrmsg1 = "", arrmsg2 = "", rtNm = "";
     ArrayList<String> adirectionArr = new ArrayList<>();
     ArrayList<String> arrmsg1Arr = new ArrayList<>();
     ArrayList<String> arrmsg2Arr = new ArrayList<>();
     ArrayList<String> rtNmArr = new ArrayList<>();
     boolean flag = false;
+
     @Override
     protected String doInBackground(String... params) {
         String stationNo = params[0];
-        try{
+        try {
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
-            url = new URL(xmlURL+"&arsId="+stationNo);
+            url = new URL(xmlURL + "&arsId=" + stationNo);
             InputStream in = url.openStream();
-            xpp.setInput(in,"UTF-8");
+            xpp.setInput(in, "UTF-8");
 
             boolean isinItemTag = false;
             int event_type = xpp.getEventType();
 
-            while(event_type != XmlPullParser.END_DOCUMENT){
-                if(event_type == XmlPullParser.START_TAG){
+            while (event_type != XmlPullParser.END_DOCUMENT) {
+                if (event_type == XmlPullParser.START_TAG) {
                     tagname = xpp.getName();
-                    if(tagname.equals("itemList")){
+                    if (tagname.equals("itemList")) {
                         isinItemTag = true;
                     }
-                }else if(event_type == XmlPullParser.TEXT){
-                    if(tagname.equals("adirection")&&isinItemTag){
+                } else if (event_type == XmlPullParser.TEXT) {
+                    if (tagname.equals("adirection") && isinItemTag) {
                         adirection += xpp.getText();
-                    }else if(tagname.equals("arrmsg1")&&isinItemTag){
+                    } else if (tagname.equals("arrmsg1") && isinItemTag) {
                         arrmsg1 += xpp.getText();
-                    }else if(tagname.equals("arrmsg2")&&isinItemTag){
+                    } else if (tagname.equals("arrmsg2") && isinItemTag) {
                         arrmsg2 += xpp.getText();
-                    }else if(tagname.equals("rtNm")&&isinItemTag){
+                    } else if (tagname.equals("rtNm") && isinItemTag) {
                         rtNm += xpp.getText();
                     }
-                }else if(event_type == XmlPullParser.END_TAG){
+                } else if (event_type == XmlPullParser.END_TAG) {
                     tagname = xpp.getName();
-                    if(tagname.equals("itemList")){
+                    if (tagname.equals("itemList")) {
                         adirectionArr.add(adirection);
                         arrmsg1Arr.add(arrmsg1);
                         arrmsg2Arr.add(arrmsg2);
@@ -73,8 +74,9 @@ public class BusStationArrive extends AsyncTask<String,String,String>{
                 event_type = xpp.next();
             }
 
-                flag = true;
-        }catch (Exception e){}
+            flag = true;
+        } catch (Exception e) {
+        }
 
 
         return null;

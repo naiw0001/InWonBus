@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private String key = "zadOGy8xBhJVBYYhLSPbfGoQHfJ1mAFAOQADCvNFSWWshGWcmf1St10W17yKjJtVEOR4hpjtrYZdBk32bLFO6w%3D%3D";
     private String xmlURL = url_busNum + "?serviceKey=" + key;
     private String BusRouteID, BusNumber;
-    private EditText u_Input,st_input;
-    private Button send,st_send;
+    private EditText u_Input, st_input;
+    private Button send, st_send;
     ArrayList<String> busNumarray = new ArrayList<String>();
     ArrayList<String> busRouteIdarray = new ArrayList<String>();
     ArrayList<String> startstationarray = new ArrayList<String>();
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 busnum();
             }
         });
-        st_input = (EditText)findViewById(R.id.edit_station);
-        st_send = (Button)findViewById(R.id.send_station);
+        st_input = (EditText) findViewById(R.id.edit_station);
+        st_send = (Button) findViewById(R.id.send_station);
         st_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,27 +54,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-public void busnum(){
-    while(true) {
-        try {
-            Thread.sleep(100);
-            if (busNumSearch.flag == true) {
-                busNumarray = busNumSearch.busNumarr;
-                busRouteIdarray = busNumSearch.busRouteIdarr;
-                startstationarray = busNumSearch.startstationarr;
-                endstationarray = busNumSearch.endstationarr;
-                break;
-            }
-        }catch (Exception e){}
-    }
-    Intent intent = new Intent(MainActivity.this,BusList.class);
-    intent.putStringArrayListExtra("busnum",busNumarray);
-    intent.putStringArrayListExtra("busRouteId",busRouteIdarray);
-    intent.putStringArrayListExtra("startstation",startstationarray);
-    intent.putStringArrayListExtra("endstation",endstationarray);
-    startActivity(intent);
 
-}
+    public void busnum() {
+        while (true) {
+            try {
+                Thread.sleep(100);
+                if (busNumSearch.flag == true) {
+                    busNumarray = busNumSearch.busNumarr;
+                    busRouteIdarray = busNumSearch.busRouteIdarr;
+                    startstationarray = busNumSearch.startstationarr;
+                    endstationarray = busNumSearch.endstationarr;
+                    break;
+                }
+            } catch (Exception e) {
+            }
+        }
+        Intent intent = new Intent(MainActivity.this, BusList.class);
+        intent.putStringArrayListExtra("busnum", busNumarray);
+        intent.putStringArrayListExtra("busRouteId", busRouteIdarray);
+        intent.putStringArrayListExtra("startstation", startstationarray);
+        intent.putStringArrayListExtra("endstation", endstationarray);
+        startActivity(intent);
+
+    }
 
 
 }
