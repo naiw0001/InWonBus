@@ -41,10 +41,11 @@ public class BusActivity extends AppCompatActivity {
     BusLocation busLocation;
     ImageView busimg[];
     TextView busNo[];
-    int bus,sectNo;
+    int bus, sectNo;
     int layoutid;
     int stationid;
     LinearLayout mainlayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,23 +127,16 @@ public class BusActivity extends AppCompatActivity {
         }
     }
 
-//    View.OnClickListener mainclick = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            String station = busstationarray.get(v.getId());
-//            Toast.makeText(getApplicationContext(),station,Toast.LENGTH_SHORT).show();
-//        }
-//    };
-
-    View.OnTouchListener mainTouch = new View.OnTouchListener() {
+    View.OnClickListener mainclick = new View.OnClickListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        public void onClick(View v) {
             String station = busstationarray.get(v.getId());
-            Toast.makeText(getApplicationContext(),station,Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(BusActivity.this,BusStationActivity.class);
-            intent.putExtra("station",station);
+            String station_num = busstationNoarray.get(v.getId());
+            Toast.makeText(getApplicationContext(), station, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(BusActivity.this, BusStationActivity.class);
+            intent.putExtra("station", station);
+            intent.putExtra("station_num", station_num);
             startActivity(intent);
-            return false;
         }
     };
 
@@ -176,8 +170,7 @@ public class BusActivity extends AppCompatActivity {
         busp.addRule(RelativeLayout.CENTER_VERTICAL);
         mainlayout.setOrientation(LinearLayout.HORIZONTAL);
         mainlayout.setLayoutParams(mainp);
-//        mainlayout.setOnClickListener(mainclick);
-        mainlayout.setOnTouchListener(mainTouch);
+        mainlayout.setOnClickListener(mainclick);
         mainlayout.setId(layoutid);
         layoutid++;
         imglayout.setLayoutParams(imgp);
@@ -187,8 +180,8 @@ public class BusActivity extends AppCompatActivity {
         busimgp.rightMargin = 40;
         busimgp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 
-        if(sectOrdArr.size() != 0 ) {
-            if(String.valueOf(index+1).equals(sectOrdArr.get(sectNo).toString()) && stopFlagArr.get(sectNo).toString().equals("1")){
+        if (sectOrdArr.size() != 0) {
+            if (String.valueOf(index + 1).equals(sectOrdArr.get(sectNo).toString()) && stopFlagArr.get(sectNo).toString().equals("1")) {
                 busimgp.addRule(RelativeLayout.CENTER_VERTICAL);
                 busNop.addRule(RelativeLayout.CENTER_VERTICAL);
                 busimg[bus].setLayoutParams(busimgp);
@@ -198,7 +191,7 @@ public class BusActivity extends AppCompatActivity {
                 bus++;
                 sectNo++;
 
-            }else if(String.valueOf(index).equals(sectOrdArr.get(sectNo).toString()) && stopFlagArr.get(sectNo).toString().equals("0")){
+            } else if (String.valueOf(index).equals(sectOrdArr.get(sectNo).toString()) && stopFlagArr.get(sectNo).toString().equals("0")) {
                 busimg[bus].setLayoutParams(busimgp);
                 busNo[bus].setLayoutParams(busNop);
                 imglayout.addView(busimg[bus]);
@@ -208,7 +201,7 @@ public class BusActivity extends AppCompatActivity {
             }
         }
 
-        if(sectNo == sectOrdArr.size()){
+        if (sectNo == sectOrdArr.size()) {
             sectNo = 0;
         }
 

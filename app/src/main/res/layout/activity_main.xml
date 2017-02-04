@@ -10,31 +10,54 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.inwon.inwonbus.MainActivity">
 
-    <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/edit"
-    android:inputType="number"
-        android:hint="bus"/>
-
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/send"
-        android:layout_below="@id/edit"
-        android:text="버스 조회"/>
+        android:orientation="horizontal"
+        android:id="@+id/businput">
 
-    <EditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:hint="bus"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/send"
+            android:layout_weight="1"
+            android:text="버스 조회"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_st"
-        android:inputType="number"
-        android:hint="station"/>
+        android:orientation="horizontal"
+        android:id="@+id/stationinput"
+        android:layout_below="@id/businput">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/send_st"
-        android:layout_below="@id/edit"
-        android:text="정류장 조회"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_station"
+            android:layout_weight="1"
+            android:hint="station"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_station"
+            android:layout_weight="1"
+            android:text="정류장검색"/>
+
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

@@ -41,23 +41,20 @@ public class MainActivity extends AppCompatActivity {
                 String temp = u_Input.getText().toString();
                 busNumSearch = new BusNumSearch();
                 busNumSearch.execute(temp);
-                sss();
+                busnum();
             }
         });
-
-        st_input = (EditText)findViewById(R.id.edit_st);
-        st_send = (Button)findViewById(R.id.send_st);
+        st_input = (EditText)findViewById(R.id.edit_station);
+        st_send = (Button)findViewById(R.id.send_station);
         st_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String temp = st_input.getText().toString();
-
             }
         });
 
-
     }
-public void sss(){
+public void busnum(){
     while(true) {
         try {
             Thread.sleep(100);

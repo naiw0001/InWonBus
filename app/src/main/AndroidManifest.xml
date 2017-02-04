@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".BusList"/>
         <activity android:name=".BusActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".BusStationActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
