@@ -1,5 +1,6 @@
 package com.example.inwon.inwonbus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -18,41 +19,47 @@ import com.example.inwon.inwonbus.database.Sqlite_search;
 
 public class Main_stationFragment extends Fragment {
     private int station_list;
-    private String[] list,text,id;
+    private String[] list, text, id;
     LinearLayout[] mainl;
     LinearLayout main;
     Sqlite_search search;
+    TextView[] textv;
+    ImageView[] imgv;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_stationfragment,null);
-        main = (LinearLayout)view.findViewById(R.id.station_list_layout);
-        search = new Sqlite_search(getActivity(),"search_list.db",null,1);
+        View view = inflater.inflate(R.layout.activity_stationfragment, null);
+        main = (LinearLayout) view.findViewById(R.id.station_list_layout);
+        search = new Sqlite_search(getActivity(), "search_list.db", null, 1);
         station_list = search.select_station_list().length;
         makelayout(station_list);
         return view;
-
+        //station , station_num
     }
-    private void makelayout(int size){
+
+    private void makelayout(int size) {
         mainl = new LinearLayout[size];
-        TextView[] textv = new TextView[size];
-        ImageView[] imgv = new ImageView[size];
+        textv = new TextView[size];
+        imgv = new ImageView[size];
         text = new String[size];
         id = new String[size];
         list = new String[size];
         LinearLayout.LayoutParams mainp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        LinearLayout.LayoutParams textp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,1);
-        LinearLayout.LayoutParams imgp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,4);
+        LinearLayout.LayoutParams textp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        LinearLayout.LayoutParams imgp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 4);
         imgp.gravity = Gravity.RIGHT;
         textp.gravity = Gravity.CENTER_HORIZONTAL;
         list = search.select_station_list();
         maketext();
-        for(int i = 0;i<size;i++){
+        for (int i = 0; i < size; i++) {
             textv[i] = new TextView(getActivity());
             imgv[i] = new ImageView(getActivity());
             mainl[i] = new LinearLayout(getActivity());
             textv[i].setLayoutParams(textp);
+            textv[i].setId(i);
             textv[i].setText(text[i]);
             textv[i].setTextSize(20f);
+            textv[i].setOnClickListener(click);
             imgv[i].setLayoutParams(imgp);
             imgv[i].setImageResource(R.drawable.delete_img);
             mainl[i].setOrientation(LinearLayout.HORIZONTAL);
@@ -63,13 +70,23 @@ public class Main_stationFragment extends Fragment {
         }
     }
 
-    private void maketext(){
-        for(int i = 0 ;i<list.length;i++) {
+    private void maketext() {
+        for (int i = 0; i < list.length; i++) {
             int temp = list[i].indexOf(",");
-            text[i] = list[i].substring(0,temp);
-            id[i] = list[i].substring(temp+1,list[i].length());
+            text[i] = list[i].substring(0, temp);
+            id[i] = list[i].substring(temp + 1, list[i].length());
         }
     }
+
+    View.OnClickListener click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getActivity(), BusStationActivity.class);
+            intent.putExtra("station",text[v.getId()].toString());
+            intent.putExtra("station_num",id[v.getId()].toString());
+            startActivity(intent);
+        }
+    };
 
 }
 

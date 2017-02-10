@@ -72,7 +72,8 @@ public class BusList extends AppCompatActivity{
                 intent.putExtra("routeid",busRouteIdarray.get(position).toString());
                 intent.putExtra("start",startstationarray.get(position).toString());
                 intent.putExtra("end",endstationarray.get(position).toString());
-                search.insert_bus_list(busNumarray.get(position).toString(),busRouteIdarray.get(position).toString());
+                search.insert_bus_list(busNumarray.get(position).toString(),busRouteIdarray.get(position).toString(),
+                        startstationarray.get(position).toString(),endstationarray.get(position).toString());
                 startActivity(intent);
             }
         });

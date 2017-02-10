@@ -40,7 +40,7 @@ public class SearchActivity extends AppCompatActivity {
         actionBar.setDisplayShowCustomEnabled(true); // 커스텀 허용 O
         actionBar.setDisplayShowTitleEnabled(false); // 타이틀 표시 X
         paramsheight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45, getResources().getDisplayMetrics()); // set dp
-        // 처음 뷰 설정
+        // 처음 뷰 actionbar 설정
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View customactionbar = inflater.inflate(R.layout.actionbar_custom_bus_search, null);
         ActionBar.LayoutParams params = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, paramsheight);

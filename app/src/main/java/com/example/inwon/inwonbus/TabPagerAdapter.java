@@ -18,7 +18,7 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment getItem(int position) { // fragment
         switch (position) {
             case 0:
                 Main_busFragment busFragment = new Main_busFragment();
