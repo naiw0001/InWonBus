@@ -9,6 +9,7 @@ public class ListViewItem {
     private String station_name;
     private String station_id;
 
+
     public void setStation_name(String name){
         station_name = name;
     }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.inwon.inwonbus.database.Sqlite_search;
 
@@ -16,21 +17,22 @@ import com.example.inwon.inwonbus.database.Sqlite_search;
  * Created by inwon on 2017-02-07.
  */
 
-public class Main_stationFragment extends Fragment {
-    private int station_list;
+public class Main_busFragment extends Fragment{
+
+    private int bus_list;
     private String[] list,text,id;
     LinearLayout[] mainl;
     LinearLayout main;
     Sqlite_search search;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_stationfragment,null);
-        main = (LinearLayout)view.findViewById(R.id.station_list_layout);
+        View view = inflater.inflate(R.layout.activity_busfragmet,null);
+        main = (LinearLayout)view.findViewById(R.id.bus_list_layout);
         search = new Sqlite_search(getActivity(),"search_list.db",null,1);
-        station_list = search.select_station_list().length;
-        makelayout(station_list);
+        bus_list = search.select_bus_list().length;
+        makelayout(bus_list);
         return view;
-
     }
     private void makelayout(int size){
         mainl = new LinearLayout[size];
@@ -44,7 +46,7 @@ public class Main_stationFragment extends Fragment {
         LinearLayout.LayoutParams imgp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,4);
         imgp.gravity = Gravity.RIGHT;
         textp.gravity = Gravity.CENTER_HORIZONTAL;
-        list = search.select_station_list();
+        list = search.select_bus_list();
         maketext();
         for(int i = 0;i<size;i++){
             textv[i] = new TextView(getActivity());
@@ -72,4 +74,3 @@ public class Main_stationFragment extends Fragment {
     }
 
 }
-
