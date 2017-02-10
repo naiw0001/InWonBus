@@ -94,7 +94,6 @@ public class BusActivity extends AppCompatActivity {
             busimg[i].bringToFront();
             busimg[i].setId(i);
             busNo[i].setText(plainNoArr.get(i).toString());
-            Log.d("iiiiiiiiiiiiiiii", String.valueOf(busimg[i].getId()));
         }
 
         buslayout(busstationarray.size());
@@ -180,7 +179,7 @@ public class BusActivity extends AppCompatActivity {
         busimgp.rightMargin = 40;
         busimgp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 
-        if (sectOrdArr.size() != 0) {
+        if (sectOrdArr.size() != 0) { // 버스 위치
             if (String.valueOf(index + 1).equals(sectOrdArr.get(sectNo).toString()) && stopFlagArr.get(sectNo).toString().equals("1")) {
                 busimgp.addRule(RelativeLayout.CENTER_VERTICAL);
                 busNop.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -247,7 +246,7 @@ public class BusActivity extends AppCompatActivity {
 
     }
 
-    public void busroutestation() {
+    public void busroutestation() { // 버스정보 가져오기
         busStationAv.execute(routeid);
         while (true) {
             try {

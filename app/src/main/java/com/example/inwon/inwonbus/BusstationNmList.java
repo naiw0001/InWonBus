@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.inwon.inwonbus.database.Sqlite_search;
+
 import java.util.ArrayList;
 
 
@@ -21,10 +23,12 @@ public class BusstationNmList extends AppCompatActivity{
     BusstationNm busstationNm;
     ArrayList<String> stationname,stationid;
     String s_name;
+    Sqlite_search search;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busstationname);
+        search = new Sqlite_search(getApplicationContext(),"search_list.db",null,1);
         Intent intent = getIntent();
         s_name = intent.getStringExtra("name");
         stationlist =  (ListView)findViewById(R.id.list);
@@ -41,6 +45,7 @@ public class BusstationNmList extends AppCompatActivity{
                Intent intent1 = new Intent(BusstationNmList.this,BusStationActivity.class);
                 intent1.putExtra("station",stationname.get(position).toString());
                 intent1.putExtra("station_num",stationid.get(position).toString());
+                search.insert_station_list(stationname.get(position).toString(),stationid.get(position).toString());
                 startActivity(intent1);
             }
         });

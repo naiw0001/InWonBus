@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,55 +8,22 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.example.inwon.inwonbus.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/businput"
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:id="@+id/main_edit"
+        android:hint="버스 또는 정류쟝 검색"
+        android:onClick="mainedit"/>
 
-        <EditText
-            android:id="@+id/edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="bus"
-            android:inputType="number" />
-
-        <Button
-            android:id="@+id/send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="버스 조회" />
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/main_search_layout">
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/stationinput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/businput"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edit_station"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="station" />
-
-        <Button
-            android:id="@+id/send_station"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="정류장검색" />
-
-
-    </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

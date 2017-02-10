@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="버스 검색"
+        android:id="@+id/edit_bus"
+        android:inputType="number"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/busClick"
+        android:text="검색"
+        android:background="#FFFFFFFF"
+        android:layout_weight="5"/>
+
+</LinearLayout>

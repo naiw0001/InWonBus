@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.inwon.inwonbus.database.Sqlite_search;
+
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -19,32 +21,58 @@ import java.util.Vector;
 
 public class BusList extends AppCompatActivity{
     ListView buslist;
-    ArrayList<String> busnumlist,busrouteid,startstation,endstation;
     ArrayAdapter adapter;
     Intent intent;
+    String busnum;
+
+    ArrayList<String> busNumarray = new ArrayList<String>();
+    ArrayList<String> busRouteIdarray = new ArrayList<String>();
+    ArrayList<String> startstationarray = new ArrayList<String>();
+    ArrayList<String> endstationarray = new ArrayList<String>();
+
+    BusNumSearch busNumSearch;
+
+    Sqlite_search search;
+
+    public void busnum(String num) {
+        busNumSearch.execute(num);
+        while (true) {
+            try {
+                Thread.sleep(100);
+                if (busNumSearch.flag == true) {
+                    busNumarray = busNumSearch.busNumarr;
+                    busRouteIdarray = busNumSearch.busRouteIdarr;
+                    startstationarray = busNumSearch.startstationarr;
+                    endstationarray = busNumSearch.endstationarr;
+                    break;
+                }
+            } catch (Exception e) {
+            }
+        }
+
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buslist);
-//        busnumlist = new ArrayList<String>();
+        search = new Sqlite_search(getApplicationContext(),"search_list.db",null,1);
         buslist = (ListView)findViewById(R.id.buslist);
         intent = getIntent();
-        busnumlist = intent.getStringArrayListExtra("busnum");
-        busrouteid = intent.getStringArrayListExtra("busRouteId");
-        startstation = intent.getStringArrayListExtra("startstation");
-        endstation = intent.getStringArrayListExtra("endstation");
-        adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,busnumlist);
+        busnum = intent.getStringExtra("bus");
+        busNumSearch = new BusNumSearch();
+        busnum(busnum);
+        adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,busNumarray);
         buslist.setAdapter(adapter);
-
 
         buslist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(BusList.this,BusActivity.class);
-                intent.putExtra("num",busnumlist.get(position));
-                intent.putExtra("routeid",busrouteid.get(position));
-                intent.putExtra("start",startstation.get(position));
-                intent.putExtra("end",endstation.get(position));
+                intent.putExtra("num",busNumarray.get(position).toString());
+                intent.putExtra("routeid",busRouteIdarray.get(position).toString());
+                intent.putExtra("start",startstationarray.get(position).toString());
+                intent.putExtra("end",endstationarray.get(position).toString());
+                search.insert_bus_list(busNumarray.get(position).toString(),busRouteIdarray.get(position).toString());
                 startActivity(intent);
             }
         });

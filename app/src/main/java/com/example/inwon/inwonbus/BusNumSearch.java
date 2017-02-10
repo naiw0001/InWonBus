@@ -32,16 +32,15 @@ public class BusNumSearch extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... params) {
         String input_busnum = params[0];
-        try{
+        try{ // xmlparsing
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
             url = new URL(xmlURL+"&strSrch="+input_busnum);
-            Log.d("xxxxxxxxxxxxxxx",String.valueOf(url));
             InputStream in = url.openStream();
             xpp.setInput(in,"UTF-8");
 
-            boolean isInItemTag = false;
+            boolean isInItemTag = false; // itemtag의 유무 체크
             int event_type = xpp.getEventType();
 
             while(event_type != XmlPullParser.END_DOCUMENT){
@@ -78,7 +77,7 @@ public class BusNumSearch extends AsyncTask<String,String,String> {
 
                 event_type = xpp.next();
             }
-                flag = true;
+                flag = true; // 데이터 있을 시 true
         }catch (Exception e){e.printStackTrace();}
 
         return null;

@@ -24,7 +24,11 @@
         <activity
             android:name=".BusStationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".BusstationNmList"/>
+        <activity android:name=".BusstationNmList" />
+        <activity
+            android:name=".BusSplash"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>
