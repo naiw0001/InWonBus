@@ -1,8 +1,6 @@
 package com.example.inwon.inwonbus;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;

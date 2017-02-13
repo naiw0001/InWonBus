@@ -1,29 +1,27 @@
 package com.example.inwon.inwonbus;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Created by inwon on 2017-02-04.
  */
 
-public class ListViewItem {
+public class StationSearchList {
 
     private String station_name;
-    private String station_id;
-
-
+    private Drawable del_img;
     public void setStation_name(String name) {
         station_name = name;
     }
 
-    public void setStation_id(String id) {
-        station_id = id;
-    }
+    public void setDel_img(Drawable img) {del_img = img;}
 
     public String getStation_name() {
         return this.station_name;
     }
 
-    public String getStation_id() {
-        return this.station_id;
+    public Drawable getDel_img() {
+        return this.del_img;
     }
 
 }

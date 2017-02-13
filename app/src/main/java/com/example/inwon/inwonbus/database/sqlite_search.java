@@ -17,7 +17,7 @@ public class Sqlite_search extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE search_bus_list (busnum CHAR(10), busrouteid CHAR(10))");
+        db.execSQL("CREATE TABLE search_bus_list (busnum CHAR(10), busrouteid CHAR(10), busstart TEXT, busend TEXT)");
         db.execSQL("CREATE TABLE search_station_list (station_name CHAR(30), station_id CHAR(6))");
     }
 
@@ -27,9 +27,9 @@ public class Sqlite_search extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE search_station_list");
     }
 
-    public void insert_bus_list(String busnum, String busrouteid) {
+    public void insert_bus_list(String busnum, String busrouteid,String busstart, String busend) {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("insert into search_bus_list values ('" + busnum + "' , '" + busrouteid + "');");
+        db.execSQL("insert into search_bus_list values ('" + busnum + "' , '" + busrouteid + "', '" + busstart + "', '" + busend + "');");
         db.close();
     }
 
@@ -45,7 +45,33 @@ public class Sqlite_search extends SQLiteOpenHelper {
         String[] list = new String[cursor.getCount()];
         int i = 0;
         while (cursor.moveToNext()) {
-            list[i] = cursor.getString(0) + "," + cursor.getString(1);
+            list[i] = cursor.getString(0) + "," + cursor.getString(1) +"|"+cursor.getString(2)+"/"+cursor.getString(3);
+            i++;
+        }
+        db.close();
+        return list;
+    }
+
+    public String[] select_bus_id() {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT busrouteid FROM search_bus_list", null);
+        String[] list = new String[cursor.getCount()];
+        int i = 0;
+        while (cursor.moveToNext()) {
+            list[i] = cursor.getString(0);
+            i++;
+        }
+        db.close();
+        return list;
+    }
+
+    public String[] select_station_id(){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT station_id FROM search_station_list",null);
+        String[] list = new String[cursor.getCount()];
+        int i = 0;
+        while(cursor.moveToNext()){
+            list[i] = cursor.getString(0);
             i++;
         }
         db.close();
@@ -63,6 +89,17 @@ public class Sqlite_search extends SQLiteOpenHelper {
         }
         db.close();
         return list;
+    }
+    public void delete_bus_list(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM search_bus_list where busrouteid='"+id+"'");
+        db.close();
+    }
+
+    public void delete_station_list(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM search_station_list where station_id='"+id+"'");
+        db.close();
     }
 
 

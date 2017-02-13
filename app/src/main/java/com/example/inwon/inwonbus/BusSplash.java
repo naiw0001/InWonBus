@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by inwon on 2017-02-07.
  */
 
-public class BusSplash extends AppCompatActivity{
+public class BusSplash extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,6 @@ public class BusSplash extends AppCompatActivity{
             public void run() {
                 finish();
             }
-        },2000);
+        }, 2000);
     }
 }
