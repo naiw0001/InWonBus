@@ -54,6 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         viewpager.setAdapter(pagerAdapter);
         viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewpager.setCurrentItem(tab.getPosition());
@@ -111,6 +112,5 @@ public class SearchActivity extends AppCompatActivity {
 public void listupdate(){
     viewpager.setAdapter( new TabPagerAdapter(getSupportFragmentManager(), tablayout.getTabCount()));
 }
-
 
 }
