@@ -20,11 +20,11 @@ import java.util.ArrayList;
  */
 
 public class BusStationActivity extends AppCompatActivity {
-    String station, station_num;
-    BusStationArrive busStationArrive;
-    LinearLayout stationLayout;
-    TextView stationNm, stationId;
-    ArrayList<String> adirectionArr, arrmsg1Arr, arrmsg2Arr, rtNmArr;
+    private String station, station_num;
+    private BusStationArrive busStationArrive;
+    private LinearLayout stationLayout;
+    private TextView stationNm, stationId;
+    private ArrayList<String> adirectionArr, arrmsg1Arr, arrmsg2Arr, rtNmArr;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class BusStationActivity extends AppCompatActivity {
         makelayout(rtNmArr.size());
         test();
     }
-
+            //set layout
     public void makelayout(int size) {
 
         int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70, getResources().getDisplayMetrics()); // set dp
@@ -147,7 +147,7 @@ public class BusStationActivity extends AppCompatActivity {
         }
     }
 
-    // 00분 00초 00번째 전
+    // test
     public void test() {
         int[] temp = new int[arrmsg1Arr.size()];
         int[] temp2 = new int[arrmsg1Arr.size()];

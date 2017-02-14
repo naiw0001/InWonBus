@@ -12,8 +12,8 @@ import com.example.inwon.inwonbus.database.Sqlite_search;
 
 
 public class MainActivity extends AppCompatActivity{
-    EditText input;
-    LinearLayout main;
+    private EditText input;
+    private LinearLayout main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

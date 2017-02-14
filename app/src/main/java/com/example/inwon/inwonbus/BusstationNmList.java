@@ -18,12 +18,12 @@ import java.util.ArrayList;
  */
 
 public class BusstationNmList extends AppCompatActivity {
-    ListView stationlist;
-    ListViewAdapter adapter;
-    BusstationNm busstationNm;
-    ArrayList<String> stationname, stationid;
-    String s_name;
-    Sqlite_search search;
+    private ListView stationlist;
+    private ListViewAdapter adapter;
+    private BusstationNm busstationNm;
+    private ArrayList<String> stationname, stationid;
+    private String s_name;
+    private Sqlite_search search;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

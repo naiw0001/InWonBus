@@ -25,17 +25,17 @@ public class BusActivity extends AppCompatActivity {
     private Intent intent;
     private String num, routeid, start, end;
     private TextView busnum, busstation;
-    ArrayList<String> busstationarray, busstationNoarray;
-    ArrayList<String> stopFlagArr, plainNoArr, islastArr, nextStTmArr, sectOrdArr, isrunynArr;
-    BusStation busStationAv;
-    LinearLayout busstation_layout;
-    BusLocation busLocation;
-    ImageView busimg[];
-    TextView busNo[];
-    int bus, sectNo;
-    int layoutid;
-    int stationid;
-    LinearLayout mainlayout;
+    private ArrayList<String> busstationarray, busstationNoarray;
+    private ArrayList<String> stopFlagArr, plainNoArr, islastArr, nextStTmArr, sectOrdArr, isrunynArr;
+    private BusStation busStationAv;
+    private LinearLayout busstation_layout;
+    private BusLocation busLocation;
+    private ImageView busimg[];
+    private TextView busNo[];
+    private int bus, sectNo;
+    private int layoutid;
+    private int stationid;
+    private LinearLayout mainlayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

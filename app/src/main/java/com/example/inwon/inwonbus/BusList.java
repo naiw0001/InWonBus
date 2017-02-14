@@ -18,19 +18,19 @@ import java.util.ArrayList;
  */
 
 public class BusList extends AppCompatActivity {
-    ListView buslist;
-    ArrayAdapter adapter;
-    Intent intent;
-    String busnum;
+    private ListView buslist;
+    private ArrayAdapter adapter;
+    private Intent intent;
+    private String busnum;
 
-    ArrayList<String> busNumarray = new ArrayList<String>();
-    ArrayList<String> busRouteIdarray = new ArrayList<String>();
-    ArrayList<String> startstationarray = new ArrayList<String>();
-    ArrayList<String> endstationarray = new ArrayList<String>();
+    private ArrayList<String> busNumarray = new ArrayList<String>();
+    private ArrayList<String> busRouteIdarray = new ArrayList<String>();
+    private ArrayList<String> startstationarray = new ArrayList<String>();
+    private ArrayList<String> endstationarray = new ArrayList<String>();
 
-    BusNumSearch busNumSearch;
+    private BusNumSearch busNumSearch;
 
-    Sqlite_search search;
+    private Sqlite_search search;
 
     public void busnum(String num) {
         busNumSearch.execute(num);

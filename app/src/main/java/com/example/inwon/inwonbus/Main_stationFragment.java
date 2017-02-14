@@ -24,7 +24,7 @@ import com.example.inwon.inwonbus.database.Sqlite_search;
 public class Main_stationFragment extends Fragment {
     private int station_list;
     private String[] list, text, id;
-    Sqlite_search search;
+    private Sqlite_search search;
     private ListView listview;
     private StationsearchAdapter adapter;
 

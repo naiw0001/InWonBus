@@ -27,8 +27,8 @@ public class SearchActivity extends AppCompatActivity {
     private ViewPager viewpager;
     private ActionBar actionBar;
     private int paramsheight;
-    Sqlite_search search;
-    TabPagerAdapter pagerAdapter;
+    private Sqlite_search search;
+    private TabPagerAdapter pagerAdapter;
 
     @Override
     protected void onResume() {
@@ -84,7 +84,7 @@ public class SearchActivity extends AppCompatActivity {
                     ActionBar.LayoutParams params = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     actionBar.setCustomView(customactionbar, params);
                     Toolbar parent = (Toolbar) customactionbar.getParent();
-                    parent.setContentInsetsAbsolute(0, 0);
+                    parent.setContentInsetsAbsolute(0,0);
                     final EditText input_station = (EditText) customactionbar.findViewById(R.id.edit_station);
                     Button station_ok = (Button) customactionbar.findViewById(R.id.stationClick);
                     station_ok.setOnClickListener(new View.OnClickListener() {
