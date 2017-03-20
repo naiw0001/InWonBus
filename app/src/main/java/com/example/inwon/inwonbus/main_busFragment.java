@@ -25,7 +25,7 @@ public class Main_busFragment extends Fragment {
 
     private int bus_list;
     private String[] list, text, id, start_s, end_s;
-    Sqlite_search search;
+    private Sqlite_search search;
     private ListView listview;
     private BussearchAdapter adapter;
 

@@ -32,7 +32,6 @@ public class BusStation extends AsyncTask<String, String, String> {
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
             url = new URL(xmlURL + "&busRouteId=" + busrouteid);
-            Log.d("xxxxxxxxxxxxx", String.valueOf(url));
             InputStream in = url.openStream();
             xpp.setInput(in, "UTF-8");
             boolean isInItemTag = false;
@@ -66,8 +65,6 @@ public class BusStation extends AsyncTask<String, String, String> {
             flag = true;
         } catch (Exception e) {
         }
-
-
         return null;
     }
 }

@@ -18,9 +18,6 @@ import android.widget.EditText;
 
 import com.example.inwon.inwonbus.database.Sqlite_search;
 
-/**
- * Created by inwon on 2017-02-07.
- */
 
 public class SearchActivity extends AppCompatActivity {
     private TabLayout tablayout;
@@ -29,7 +26,7 @@ public class SearchActivity extends AppCompatActivity {
     private int paramsheight;
     private Sqlite_search search;
     private TabPagerAdapter pagerAdapter;
-
+    private int position =0;
     @Override
     protected void onResume() {
         super.onResume();
@@ -58,7 +55,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewpager.setCurrentItem(tab.getPosition());
-                int position = tab.getPosition();
+                 position = tab.getPosition();
                 if (position == 0) { // bus tab
                     // CUSTOM ActionBar
                     LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
